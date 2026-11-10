@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package invoice;
+
+
+service InvoiceService {
+
+    rpc CreateJob(CreateJobRequest)
+        returns (JobResponse);
+
+    rpc GetJobStatus(JobRequest)
+        returns (JobResponse);
+
+    rpc GetJobResult(JobRequest)
+        returns (JobResultResponse);
+
+    rpc ListJobs(Empty)
+        returns (JobListResponse);
+
+    rpc DeleteJob(JobRequest)
+        returns (DeleteJobResponse);
+}
+
+
+message CreateJobRequest {
+    string filename = 1;
+    bytes file_content = 2;
+}
+
+
+message JobRequest {
+    string req_no = 1;
+}
+
+
+message JobResponse {
+    string req_no = 1;
+    string state = 2;
+}
+
+
+message JobResultResponse {
+    string req_no = 1;
+    string state = 2;
+    string result_json = 3;
+    string error = 4;
+}
+
+
+message JobListResponse {
+    repeated JobResponse jobs = 1;
+}
+
+
+message DeleteJobResponse {
+    bool success = 1;
+}
+
+
+message Empty {
+}

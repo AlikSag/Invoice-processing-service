@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+azure-ai-documentintelligence
+pytest
+grpcio>=1.84.0
+grpcio-tools>=1.84.0
+protobuf>=7.35.1
